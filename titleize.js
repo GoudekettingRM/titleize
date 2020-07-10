@@ -1,4 +1,4 @@
-const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&'()*+,-./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
+const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&'()*+,./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
 
 const capitalize = (value) => {
   const splitValue = value.toString().split('');
@@ -27,6 +27,10 @@ const titleize = (value, exceptions = {}) => {
     : symbols.toString().slice(2, -2);
 
   const symbolRegExp = new RegExp('[' + symbolsForRegex + ']', 'gi');
+
+  if (!exceptions.ignoreSymbols || !exceptions.ignoreSymbols.split('').includes('-')) {
+    value = value.replace(/-/g, ' ');
+  }
 
   return value
     .toString()
