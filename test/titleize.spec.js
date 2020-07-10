@@ -6,24 +6,39 @@ describe('Titleize tests', () => {
     it('should return a string without special characters', () => {
       const str = "I'm a string! Or am I? !@#$%^&*()-_=+[]{};:'\"\\|/.>,<";
       const title = titleize(str);
-      expect(title).to.equal('Im A String Or Am I');
+      expect(title).to.equal('Im a String or Am I');
     });
     it('should de-slugify a slug', () => {
       const str = 'i-am-a-slug-for-your-url';
       const title = titleize(str);
-      expect(title).to.equal('I Am A Slug For Your Url');
+      expect(title).to.equal('I Am a Slug for Your Url');
     });
+    it('should not capitalise any conjunctions', () => {
+      const str = 'we are conjunctions AND BUT OR NOR you see'
+      const title = titleize(str);
+      expect(title).to.equal('We Are Conjunctions and but or nor You See')
+    })
+    it('should not capitalise any articles', () => {
+      const str = 'we are conjunctions A AN THE you see'
+      const title = titleize(str);
+      expect(title).to.equal('We Are Conjunctions a an the You See')
+    })
+    it('should not capitalise any prepositions', () => {
+      const str = 'we are conjunctions via to on per for in of by at as yet so you see'
+      const title = titleize(str);
+      expect(title).to.equal('We Are Conjunctions via to on per for in of by at as yet so You See')
+    })
   });
   describe('ignoreSymbols exceptions', () => {
-    it('should return keep the special characters that are provided', () => {
-      const str = "I'm a string! Or am I? !@#$%^&*()-_=+[]{};:'\"\\|/.>,<";
+    it('should keep the special characters that are provided', () => {
+      const str = "I'm a string! yes, Or am I? !@#$%^&*()-_=+[]{};:'\"\\|/.>,<";
       const title = titleize(str, { ignoreSymbols: '\'!.'});
-      expect(title).to.equal("I'm A String! Or Am I ! '.");
+      expect(title).to.equal("I'm a String! Yes or Am I ! '.");
     });
     it('should keep the dashes if provided as ignoreSymbol', () => {
       const str = 'i am a string with-a dash';
       const title = titleize(str, { ignoreSymbols: '-' });
-      expect(title).to.equal('I Am A String With-a Dash');
+      expect(title).to.equal('I Am a String With-a Dash');
     })
   })
   describe('keepUpperCaseLetters exceptions', () => {

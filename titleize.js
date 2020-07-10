@@ -1,4 +1,11 @@
 const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&'()*+,./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
+const lowerCasedWords = [
+  'a', 'an', 'the',
+  'and', 'but', 'or', 'nor',
+  'via', 'to', 'on', 'per',
+  'for', 'in', 'of', 'by',
+  'at', 'as', 'yet', 'so'
+]
 
 const capitalize = (value) => {
   const splitValue = value.toString().split('');
@@ -39,13 +46,17 @@ const titleize = (value, exceptions = {}) => {
     .filter((word) => {
       if (word) return word;
     })
-    .map((word) =>
-      word === word.toUpperCase() && exceptions.keepUpperCaseWords
-        ? word
-        : exceptions.keepUpperCaseLetters
-        ? capitalize(word)
-        : capitalize(word.toLowerCase()),
-    )
+    .map((word) => {
+      if (word === word.toUpperCase() && exceptions.keepUpperCaseWords) {
+        return word
+      } else if (exceptions.keepUpperCaseLetters) {
+        return capitalize(word)
+      } else if (lowerCasedWords.includes(word.toLowerCase())) {
+        return word.toLowerCase();
+      } else {
+        return capitalize(word.toLowerCase());
+      }
+    })
     .join(' ');
 };
 
