@@ -39,7 +39,7 @@ So far, the options parameter is an object with three possible properties. These
 - ignoreSymbols (`String`, optional)
 
 #### keepUpperCaseWords
-Setting this to true will preserve all present words that are fully capitalised.
+Setting this to true will preserve all present words that are fully capitalised. This can be useful when dealing with abbreviations or acronyms.
 ```
 titleize('hello WORLD', { keepUpperCaseWords: true }); // result: Hello WORLD
 ```
@@ -53,9 +53,12 @@ titleize('hello camelCase', { keepUpperCaseLetters: true }); // result: Hello Ca
 #### ignoreSymbols
 Providing a string to this setting will make sure that the provided symbols are not removed by Titleize JS. This string can contain many different symbols.
 ```
-titleize('hello world! do you like javascript?', { ignoreSymbols: '!' }) // result: Hello World! Do You Like Javascript
+titleize('hello world! do you like javascript?', { ignoreSymbols: '!' })
+    // result: Hello World! Do You Like Javascript
 
-titleize('hello world! do you like javascript?', { ignoreSymbols: '?' }) // result: Hello World Do You Like Javascript?
+titleize('hello world! do you like javascript?', { ignoreSymbols: '?' })
+    // result: Hello World Do You Like Javascript?
 
-titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' }) // result: Hello World! Do You Like Javascript?
+titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' })
+    // result: Hello World! Do You Like Javascript?
 ```
