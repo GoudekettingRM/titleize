@@ -1,3 +1,5 @@
+/* Titleize JS © https://github.com/GoudekettingRM/titleize && Robin Goudeketting */
+
 const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&'()*+,./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
 const lowerCasedWords = [
   'a',
@@ -85,3 +87,12 @@ const titleize = (value, exceptions = {}) => {
 };
 
 module.exports = titleize;
+
+/*
+     /\    /\
+     \ \__/ /
+     (ಠ _ ಠ)
+_____(_____)____
+|     Robin    |
+| Goudeketting_|
+*/
