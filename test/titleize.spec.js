@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const titleize = require('../titleize');
+const titleize = require('../titleize.min.js');
 
 describe('Titleize tests', () => {
   describe('Plain tests, without exceptions', () => {
