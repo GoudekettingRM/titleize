@@ -27,24 +27,28 @@ const capitalize = (value) => {
   return splitValue.join('');
 };
 
-const cleanseSymbolList = (symbolsToIgnore) => {
-  let symbolsForRegex = symbols.toString().slice(2, -2);
-
-  const symArr = symbolsToIgnore.split('');
-
-  symArr.forEach((symbol) => {
-    symbolsForRegex = symbolsForRegex.replace(
-      new RegExp('[\\' + symbol + ']', 'g'),
-      '',
-    );
+const cleanseSymbolList = (symbolsToIgnore, regex) => {
+  symbolsToIgnore.split('').forEach((symbol) => {
+    regex = regex.replace(new RegExp('[\\' + symbol + ']', 'g'), '');
   });
 
-  return symbolsForRegex;
+  return regex;
 };
 
 const titleize = (value, exceptions = {}) => {
+  if (typeof value !== 'string') {
+    try {
+      throw new Error('No string was provided');
+    } catch (err) {
+      console.error(err.name, ':', err.message);
+    }
+  }
+
   const symbolsForRegex = exceptions.ignoreSymbols
-    ? cleanseSymbolList(exceptions.ignoreSymbols)
+    ? cleanseSymbolList(
+        exceptions.ignoreSymbols,
+        symbols.toString().slice(2, -2),
+      )
     : symbols.toString().slice(2, -2);
 
   const symbolRegExp = new RegExp('[' + symbolsForRegex + ']', 'gi');
@@ -57,7 +61,6 @@ const titleize = (value, exceptions = {}) => {
   }
 
   const valueArray = value
-    .toString()
     .replace(symbolRegExp, '')
     .split(' ')
     .filter((word) => {
