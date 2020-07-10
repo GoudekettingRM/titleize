@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/GoudekettingRM/titleize.git"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "main": "./titleize.js",
   "keywords": [
     "titleize",
@@ -15,5 +18,9 @@
     "string"
   ],
   "author": "Robin Goudeketting <robin@goudeketting.nl>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
 }
