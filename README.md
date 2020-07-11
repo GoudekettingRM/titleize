@@ -10,6 +10,41 @@ npm i titleizejs
 
 to install the module in your project.
 
+## Capitalisation Rules in Titleize JS
+
+By default Titleize JS:
+
+- Removes all symbols in the provided string
+- Makes all words completely lower case and capitalises every first letter
+- Always capitalises the first and last word of the string
+- Does not capitalise the following words (articles, conjunctions, prepositions), unless they are the first or last word of the sentence:
+  - a
+  - an
+  - the
+  - and
+  - but
+  - or
+  - nor
+  - via
+  - to
+  - on
+  - per
+  - for
+  - in
+  - of
+  - by
+  - at
+  - as
+  - yet
+  - so
+
+## Not Yet Implemented
+
+Support for the following is planned and wanted, but not yet present:
+
+- Capitalisation of the first letter of each word in a hyphenated word.
+- International (non-English) titleisation.
+
 ## Usage
 
 First, require the module
@@ -39,19 +74,25 @@ So far, the options parameter is an object with three possible properties. These
 - ignoreSymbols (`String`, optional)
 
 #### keepUpperCaseWords
+
 Setting this to true will preserve all present words that are fully capitalised. This can be useful when dealing with abbreviations or acronyms.
+
 ```
 titleize('hello WORLD', { keepUpperCaseWords: true }); // result: Hello WORLD
 ```
 
 #### keepUpperCaseLetters
+
 Setting this to true will preserve all present capital letters.
+
 ```
 titleize('hello camelCase', { keepUpperCaseLetters: true }); // result: Hello CamelCase
 ```
 
 #### ignoreSymbols
+
 Providing a string to this setting will make sure that the provided symbols are not removed by Titleize JS. This string can contain many different symbols.
+
 ```
 titleize('hello world! do you like javascript?', { ignoreSymbols: '!' })
     // result: Hello World! Do You Like Javascript
@@ -62,3 +103,7 @@ titleize('hello world! do you like javascript?', { ignoreSymbols: '?' })
 titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' })
     // result: Hello World! Do You Like Javascript?
 ```
+
+#### Support, bug-reports, feature suggestions
+
+If you want to contribute, report a bug, or have a suggestion for a feature, contact me at robin@goudeketting.nl or contact me via Github or Twitter.
