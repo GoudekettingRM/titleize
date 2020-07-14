@@ -14,7 +14,7 @@ to install the module in your project.
 
 By default Titleize JS:
 
-- Removes all symbols in the provided string
+- Removes all symbols in the provided string, _except apostrophes (')_ \*.
 - Makes all words completely lower case and capitalises every first letter
 - Always capitalises the first and last word of the string
 - Does not capitalise the following words (articles, conjunctions, prepositions), unless they are the first or last word of the sentence:
@@ -37,6 +37,8 @@ By default Titleize JS:
   - as
   - yet
   - so
+
+\* Apostrophes are not removed, since they are vital in abbreviations, such as _don't_, _I'm_, and _you'd_.
 
 ## Not Yet Implemented
 

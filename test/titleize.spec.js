@@ -1,16 +1,16 @@
 const expect = require('chai').expect;
 const titleize = require('../titleize.js');
 
-describe('Titleize tests', () => {
+describe('Titleize tests, not minified', () => {
   describe('Plain tests, without exceptions', () => {
     it('should return a string without special characters', () => {
-      const str = "I'm a string! Or am I? !@#$%^&*()-_=+[]{};:'\"\\|/.>,<";
+      const str = 'I\'m a string! Or am I? !@#$%^&*()-_=+[]{};:"\\|/.>,<';
       const title = titleize(str);
-      expect(title).to.equal('Im a String or Am I');
+      expect(title).to.equal("I'm a String or Am I");
     });
     it('should de-slugify a slug', () => {
       const str = 'i-am-a-slug-for-your-url';
-      const title = titleize(str);
+      const title = titleize(str, { isSlug: true });
       expect(title).to.equal('I Am a Slug for Your Url');
     });
     it('should not capitalise any conjunctions', () => {

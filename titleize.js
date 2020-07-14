@@ -1,6 +1,6 @@
 /* Titleize JS © https://github.com/GoudekettingRM/titleize && Robin Goudeketting */
 
-const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&'()*+,./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
+const symbols = /[!¡⁄÷…æ«≤πø¬^˚¨∆¥˙†®´∑œåß∂ƒ∂©˙~µ∫√ç≈§±"#$%&()*+,./:;<=>¿?@[\\\]^_`{|}~‹™›€£¢∞]/;
 const lowerCasedWords = [
   'a',
   'an',
@@ -12,9 +12,11 @@ const lowerCasedWords = [
   'via',
   'to',
   'on',
+  'onto',
   'per',
   'for',
   'in',
+  'into',
   'of',
   'by',
   'at',
@@ -37,6 +39,20 @@ const cleanseSymbolList = (symbolsToIgnore, regex) => {
   return regex;
 };
 
+const getWordForTitle = (word, index, array, exceptions = {}) => {
+  if (word === word.toUpperCase() && exceptions.keepUpperCaseWords) {
+    return word;
+  } else if (exceptions.keepUpperCaseLetters) {
+    return capitalize(word);
+  } else if (index === 0 || index == array.length - 1) {
+    return capitalize(word.toLowerCase());
+  } else if (lowerCasedWords.includes(word.toLowerCase())) {
+    return word.toLowerCase();
+  } else {
+    return capitalize(word.toLowerCase());
+  }
+};
+
 const titleize = (value, exceptions = {}) => {
   if (typeof value !== 'string') {
     try {
@@ -55,35 +71,42 @@ const titleize = (value, exceptions = {}) => {
 
   const symbolRegExp = new RegExp('[' + symbolsForRegex + ']', 'gi');
 
-  if (
-    !exceptions.ignoreSymbols ||
-    !exceptions.ignoreSymbols.split('').includes('-')
-  ) {
+  if (exceptions.isSlug) {
     value = value.replace(/-/g, ' ');
   }
 
-  const valueArray = value
+  return value
     .replace(symbolRegExp, '')
     .split(' ')
     .filter((word) => {
       if (word) return word;
-    });
-
-  return valueArray
-    .map((word, index) => {
-      if (word === word.toUpperCase() && exceptions.keepUpperCaseWords) {
-        return word;
-      } else if (exceptions.keepUpperCaseLetters) {
-        return capitalize(word);
-      } else if (index === 0 || index == valueArray.length - 1) {
-        return capitalize(word.toLowerCase());
-      } else if (lowerCasedWords.includes(word.toLowerCase())) {
-        return word.toLowerCase();
+    })
+    .map((word, index, array) => {
+      if (exceptions.isSlug) {
+        return getWordForTitle(word, index, array, exceptions);
+      } else if (word.indexOf('-') !== -1 && word.length >= 3) {
+        return word
+          .split('-')
+          .map((w) => {
+            return getWordForTitle(w, index, array, exceptions);
+          })
+          .join('-');
+      } else if (word.indexOf('-') !== -1 && word.length < 3) {
+        const v = word.replace(/-/g, '');
+        if (v.length > 0) {
+          return getWordForTitle(
+            word.replace(/-/g, ''),
+            index,
+            array,
+            exceptions,
+          );
+        }
       } else {
-        return capitalize(word.toLowerCase());
+        return getWordForTitle(word, index, array, exceptions);
       }
     })
-    .join(' ');
+    .join(' ')
+    .trim();
 };
 
 module.exports = titleize;
