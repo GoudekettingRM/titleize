@@ -1,4 +1,4 @@
-# Titleize JS
+# Titleize JS ![Test thing](https://github.com/GoudekettingRM/titleize/workflows/Test%20thing/badge.svg)
 
 ## Installation
 
