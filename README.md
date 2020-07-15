@@ -18,6 +18,7 @@ By default Titleize JS:
 
 - Removes all symbols in the provided string, _except apostrophes (')_ \*.
 - Makes all words completely lower case and capitalises every first letter
+- Capitalises the all words in hyphenated words
 - Always capitalises the first and last word of the string
 - Does not capitalise the following words (articles, conjunctions, prepositions), unless they are the first or last word of the sentence:
   - a
@@ -46,7 +47,6 @@ By default Titleize JS:
 
 Support for the following is planned and wanted, but not yet present:
 
-- Capitalisation of the first letter of each word in a hyphenated word.
 - International (non-English) titleisation.
 
 ## Usage
@@ -76,6 +76,7 @@ So far, the options parameter is an object with three possible properties. These
 - keepUpperCaseWords (`Boolean`, default: `false`, optional)
 - keepUpperCaseLetters (`Boolean`, default: `false`, optional)
 - ignoreSymbols (`String`, optional)
+- isSlug (`Boolean`, optional)
 
 #### keepUpperCaseWords
 
@@ -106,6 +107,18 @@ titleize('hello world! do you like javascript?', { ignoreSymbols: '?' })
 
 titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' })
     // result: Hello World! Do You Like Javascript?
+```
+
+#### isSlug
+
+If the string passed to `titleize` is a slug, the default behaviour of Titleize JS is to capitalise all words and preserve the hyphens, as if it were a hyphenated word. To make sure that the slug gets converted properly, pass the isSlug setting in the options object. E.g.
+
+```
+// Default behaviour
+titleize('i-am-a-slug') // result: I-Am-a-Slug
+
+// Passing { isSlug: true }
+titleize('i-am-a-slug', { isSlug: true }) // result: I Am a Slug
 ```
 
 #### Support, bug-reports, feature suggestions
