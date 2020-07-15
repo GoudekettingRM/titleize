@@ -2,6 +2,14 @@
 ![Node 12.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2012.x/badge.svg)
 ![Node 14.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2014.x/badge.svg)
 
+<a href="https://www.paypal.me/goudekettingrm" target="_blank">
+  <img
+    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+    title="PayPal - The safer, easier way to pay online!"
+    alt="Donate with PayPal button"
+  />
+</a>
+
 ## Installation
 
 Run
@@ -39,19 +47,19 @@ Support for the following is planned and wanted, but not yet present:
 
 First, require the module
 
-```
+```js
 const titleize = require('titleizejs');
 ```
 
 Basic syntax of Titleize JS
 
-```
+```js
 titleize(string, options);
 ```
 
 Example:
 
-```
+```js
 titleize('hello world'); // result: Hello World
 ```
 
@@ -68,7 +76,7 @@ So far, the options parameter is an object with three possible properties. These
 
 Setting this to true will preserve all present words that are fully capitalised. This can be useful when dealing with abbreviations or acronyms.
 
-```
+```js
 titleize('hello WORLD', { keepUpperCaseWords: true }); // result: Hello WORLD
 ```
 
@@ -76,7 +84,7 @@ titleize('hello WORLD', { keepUpperCaseWords: true }); // result: Hello WORLD
 
 Setting this to true will preserve all present capital letters.
 
-```
+```js
 titleize('hello camelCase', { keepUpperCaseLetters: true }); // result: Hello CamelCase
 ```
 
@@ -84,27 +92,27 @@ titleize('hello camelCase', { keepUpperCaseLetters: true }); // result: Hello Ca
 
 Providing a string to this setting will make sure that the provided symbols are not removed by Titleize JS. This string can contain many different symbols.
 
-```
-titleize('hello world! do you like javascript?', { ignoreSymbols: '!' })
-    // result: Hello World! Do You Like Javascript
+```js
+titleize('hello world! do you like javascript?', { ignoreSymbols: '!' });
+// result: Hello World! Do You Like Javascript
 
-titleize('hello world! do you like javascript?', { ignoreSymbols: '?' })
-    // result: Hello World Do You Like Javascript?
+titleize('hello world! do you like javascript?', { ignoreSymbols: '?' });
+// result: Hello World Do You Like Javascript?
 
-titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' })
-    // result: Hello World! Do You Like Javascript?
+titleize('hello world! do you like javascript?', { ignoreSymbols: '!?' });
+// result: Hello World! Do You Like Javascript?
 ```
 
 #### isSlug
 
 If the string passed to `titleize` is a slug, the default behaviour of Titleize JS is to capitalise all words and preserve the hyphens, as if it were a hyphenated word. To make sure that the slug gets converted properly, pass the isSlug setting in the options object. E.g.
 
-```
+```js
 // Default behaviour
-titleize('i-am-a-slug') // result: I-Am-a-Slug
+titleize('i-am-a-slug'); // result: I-Am-a-Slug
 
 // Passing { isSlug: true }
-titleize('i-am-a-slug', { isSlug: true }) // result: I Am a Slug
+titleize('i-am-a-slug', { isSlug: true }); // result: I Am a Slug
 ```
 
 #### Support, bug-reports, feature suggestions
