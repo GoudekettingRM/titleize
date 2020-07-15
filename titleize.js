@@ -61,6 +61,13 @@ const titleize = (value, exceptions = {}) => {
       console.error(err.name + ':', err.message);
       throw err;
     }
+  } else if (!value) {
+    try {
+      throw new Error('Empty string provided');
+    } catch (err) {
+      console.error(err.name + ':', err.message);
+      throw err;
+    }
   }
   const symbolsForRegex = exceptions.ignoreSymbols
     ? cleanseSymbolList(
