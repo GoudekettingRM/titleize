@@ -40,16 +40,46 @@ module.exports = [
         expectedOutput:
           'Or We Are Conjunctions via to on per for in of by at as yet so You See And',
       },
+      {
+        it:
+          'should capitalise the first letter of both words of a hyphenated word 1/3',
+        input: 'this sentence is self-explanatory',
+        expectedOutput: 'This Sentence Is Self-Explanatory',
+      },
+      {
+        it:
+          'should capitalise the first letter of both words of a hyphenated word 2/3',
+        input: 'self-explanatory is this sentence',
+        expectedOutput: 'Self-Explanatory Is This Sentence',
+      },
+      {
+        it:
+          'should capitalise the first letter of both words of a hyphenated word 3/3',
+        input: 'this sentence self-explanatory is',
+        expectedOutput: 'This Sentence Self-Explanatory Is',
+      },
     ],
   },
   {
     describe: 'ignoreSymbols exceptions',
     tests: [
       {
-        it: 'should keep the special characters that are provided',
-        input: '',
-        setting: { ignoreSymbols: "'!." },
-        expectedOutput: "I'm a String! Yes or Am I ! '.",
+        it: 'should keep the special characters that are provided 1/3',
+        input: "I'm a String! Yes or Am I !-<.<>$%",
+        setting: { ignoreSymbols: '!.' },
+        expectedOutput: "I'm a String! Yes or Am I !.",
+      },
+      {
+        it: 'should keep the special characters that are provided 2/3',
+        input: "I'm a string! right? wrong....",
+        setting: { ignoreSymbols: '!?' },
+        expectedOutput: "I'm a String! Right? Wrong",
+      },
+      {
+        it: 'should keep the special characters that are provided 3/3',
+        input: 'here starts the title: this is the subtitle',
+        setting: { ignoreSymbols: ':' },
+        expectedOutput: 'Here Starts the Title: This Is the Subtitle',
       },
     ],
   },
@@ -98,6 +128,12 @@ module.exports = [
         input: 'i-am-a-slug-for-your-url',
         setting: { isSlug: true },
         expectedOutput: 'I Am a Slug for Your Url',
+      },
+      {
+        it: 'should de-slugify anything if isSlug is passed',
+        input: 'i am not a slug-for-your-url',
+        setting: { isSlug: true },
+        expectedOutput: 'I Am Not a Slug for Your Url',
       },
     ],
   },

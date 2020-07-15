@@ -1,10 +1,11 @@
 const expect = require('chai').expect;
 const titleize = require('../titleize.js');
 const minifiedTitleize = require('../titleize.min.js');
-const tests = require('./tests');
+const stringTests = require('./stringTests');
+const throwTests = require('./throwTests');
 
-describe('Titleize tests, not minified', () => {
-  tests.forEach((testSet) => {
+describe('String tests for Titleize, not minified', () => {
+  stringTests.forEach((testSet) => {
     describe(testSet.describe, () => {
       testSet.tests.forEach((test) => {
         it(test.it, () => {
@@ -21,8 +22,18 @@ describe('Titleize tests, not minified', () => {
   });
 });
 
-describe('Titleize tests, minified', () => {
-  tests.forEach((testSet) => {
+describe(`Throw tests from Titleize, not minified. ${throwTests.describe}`, () => {
+  throwTests.tests.forEach((test) => {
+    it(test.it, () => {
+      expect(function () {
+        titleize(test.input);
+      }).to.throw(test.expectedOutput.err, test.expectedOutput.msg);
+    });
+  });
+});
+
+describe('String tests for Titleize, minified', () => {
+  stringTests.forEach((testSet) => {
     describe(testSet.describe, () => {
       testSet.tests.forEach((test) => {
         it(test.it, () => {
@@ -35,6 +46,16 @@ describe('Titleize tests, minified', () => {
           }
         });
       });
+    });
+  });
+});
+
+describe(`Throw tests from Titleize, minified. ${throwTests.describe}`, () => {
+  throwTests.tests.forEach((test) => {
+    it(test.it, () => {
+      expect(function () {
+        minifiedTitleize(test.input);
+      }).to.throw(test.expectedOutput.err, test.expectedOutput.msg);
     });
   });
 });

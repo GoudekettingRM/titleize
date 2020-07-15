@@ -56,12 +56,12 @@ const getWordForTitle = (word, index, array, exceptions = {}) => {
 const titleize = (value, exceptions = {}) => {
   if (typeof value !== 'string') {
     try {
-      throw new Error('No string was provided');
+      throw new TypeError('No string was provided');
     } catch (err) {
-      console.error(err.name, ':', err.message);
+      console.error(err.name + ':', err.message);
+      throw err;
     }
   }
-
   const symbolsForRegex = exceptions.ignoreSymbols
     ? cleanseSymbolList(
         exceptions.ignoreSymbols,
@@ -84,14 +84,23 @@ const titleize = (value, exceptions = {}) => {
     .map((word, index, array) => {
       if (exceptions.isSlug) {
         return getWordForTitle(word, index, array, exceptions);
-      } else if (word.indexOf('-') !== -1 && word.length >= 3) {
+      } else if (
+        word.indexOf('-') !== -1 &&
+        word.length >= 3 &&
+        word.match(/(?<=[\w+])-(?=[\w+])/gi)
+      ) {
         return word
           .split('-')
           .map((w) => {
             return getWordForTitle(w, index, array, exceptions);
           })
           .join('-');
-      } else if (word.indexOf('-') !== -1 && word.length < 3) {
+      } else if (
+        (word.indexOf('-') !== -1 && word.length < 3) ||
+        (word.indexOf('-') !== -1 &&
+          word.length >= 3 &&
+          !word.match(/(?<=[\w+])-(?=[\w+])/gi))
+      ) {
         const v = word.replace(/-/g, '');
         if (v.length > 0) {
           return getWordForTitle(
