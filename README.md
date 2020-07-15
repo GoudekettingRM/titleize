@@ -1,4 +1,6 @@
-# Titleize JS
+![Node 10.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2010.x/badge.svg)
+![Node 12.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2012.x/badge.svg)
+![Node 14.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2014.x/badge.svg)
 
 ## Installation
 
@@ -14,7 +16,7 @@ to install the module in your project.
 
 By default Titleize JS:
 
-- Removes all symbols in the provided string
+- Removes all symbols in the provided string, _except apostrophes (')_ \*.
 - Makes all words completely lower case and capitalises every first letter
 - Always capitalises the first and last word of the string
 - Does not capitalise the following words (articles, conjunctions, prepositions), unless they are the first or last word of the sentence:
@@ -37,6 +39,8 @@ By default Titleize JS:
   - as
   - yet
   - so
+
+\* Apostrophes are not removed, since they are vital in abbreviations, such as _don't_, _I'm_, and _you'd_.
 
 ## Not Yet Implemented
 
