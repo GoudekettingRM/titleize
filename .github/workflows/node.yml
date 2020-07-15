@@ -1,4 +1,4 @@
-name: Test suit
+name: Node 10.x
 
 on: [push]
 
