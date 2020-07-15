@@ -1,4 +1,6 @@
-# Titleize JS ![Test thing](https://github.com/GoudekettingRM/titleize/workflows/Test%20thing/badge.svg)
+![Node 10.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2010.x/badge.svg)
+![Node 12.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2012.x/badge.svg)
+![Node 14.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2014.x/badge.svg)
 
 ## Installation
 
