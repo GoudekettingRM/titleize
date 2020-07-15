@@ -21,25 +21,11 @@ By default Titleize JS:
 - Capitalises the all words in hyphenated words
 - Always capitalises the first and last word of the string
 - Does not capitalise the following words (articles, conjunctions, prepositions), unless they are the first or last word of the sentence:
-  - a
-  - an
-  - the
-  - and
-  - but
-  - or
-  - nor
-  - via
-  - to
-  - on
-  - per
-  - for
-  - in
-  - of
-  - by
-  - at
-  - as
-  - yet
-  - so
+  - a, an, the
+  - and, but, or, nor
+  - via, to, on, onto, in, into
+  - per, for, of, by
+  - at, as, yet, so
 
 \* Apostrophes are not removed, since they are vital in abbreviations, such as _don't_, _I'm_, and _you'd_.
 
