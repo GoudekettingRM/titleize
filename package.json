@@ -1,6 +1,6 @@
 {
   "name": "titleizejs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert your strings to represent proper titles, rather than generic and random strings",
   "repository": {
     "type": "git",
