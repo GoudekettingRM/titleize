@@ -6,10 +6,7 @@ declare module 'titleizejs' {
     isSlug?: boolean;
   }
 
-  export declare function titleize(
-    input: string,
-    exceptions?: IExceptions,
-  ): string;
+  export function titleize(input: string, exceptions?: IExceptions): string;
 
   export default titleize;
 }
