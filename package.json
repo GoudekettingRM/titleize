@@ -10,6 +10,7 @@
     "test": "mocha"
   },
   "main": "./titleize.min.js",
+  "types": "./titleize.min.d.ts",
   "keywords": [
     "titleize",
     "javascript",
