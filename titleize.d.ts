@@ -1,11 +1,15 @@
-interface IExceptions {
-  keepUpperCaseLetters?: boolean;
-  keepUpperCaseWords?: boolean;
-  ignoreSymbols?: string;
-  isSlug?: boolean;
-}
+declare module 'titleizejs' {
+  interface IExceptions {
+    keepUpperCaseLetters?: boolean;
+    keepUpperCaseWords?: boolean;
+    ignoreSymbols?: string;
+    isSlug?: boolean;
+  }
 
-export declare function titleize(
-  input: string,
-  exceptions?: IExceptions,
-): string;
+  export declare function titleize(
+    input: string,
+    exceptions?: IExceptions,
+  ): string;
+
+  export default titleize;
+}
