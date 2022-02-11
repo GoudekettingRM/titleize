@@ -3,8 +3,7 @@
   "version": "1.0.3",
   "description": "Convert your strings to represent proper titles, rather than generic and random strings",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/GoudekettingRM/titleize.git"
+    "url": "git://github.com/GoudekettingRM/titleize.git"
   },
   "scripts": {
     "test": "mocha"
