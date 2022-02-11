@@ -1,6 +1,4 @@
-![Node 10.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2010.x/badge.svg)
-![Node 12.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2012.x/badge.svg)
-![Node 14.x](https://github.com/GoudekettingRM/titleize/workflows/Node%2014.x/badge.svg)
+![Node.js CI](https://github.com/GoudekettingRM/titleize/workflows/Node.js%20(10.x,%2012.x,%2014.x,%2016.x)/badge.svg)
 
 <a href="https://www.paypal.me/goudekettingrm" target="_blank">
   <img
