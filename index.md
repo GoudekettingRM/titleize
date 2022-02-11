@@ -1,4 +1,4 @@
-![Node.js CI](https://github.com/GoudekettingRM/titleize/workflows/Node.js%20(10.x,%2012.x,%2014.x,%2016.x)/badge.svg)
+![Node.js CI](https://github.com/GoudekettingRM/titleize/workflows/Node.js/badge.svg)
 
 <a href="https://www.paypal.me/goudekettingrm" target="_blank">
   <img
