@@ -4,7 +4,8 @@
   "description": "Convert your strings to represent proper titles, rather than generic and random strings",
   "repository": "git://github.com/GoudekettingRM/titleize.git",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "min": "npx google-closure-compiler --js=titleize.js --js_output_file=titleize.min.js --language_out=ECMASCRIPT5_STRICT"
   },
   "main": "./titleize.min.js",
   "types": "./titleize.d.ts",
