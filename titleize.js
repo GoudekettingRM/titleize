@@ -89,12 +89,21 @@ const titleize = (value, exceptions = {}) => {
       if (word) return word;
     })
     .map((word, index, array) => {
+      const regex = /([\w+])-([\w+])/gi
+      const matches = [];
+      while (true) {
+        const match = regex.exec(word);
+        if (!match) break;
+        matches.push(match[match[1] ? 1 : 2]);
+      }
+
       if (exceptions.isSlug) {
         return getWordForTitle(word, index, array, exceptions);
       } else if (
         word.indexOf('-') !== -1 &&
         word.length >= 3 &&
-        word.match(/(?<=[\w+])-(?=[\w+])/gi)
+        // word.match(/(?<=[\w+])-(?=[\w+])/gi)
+        matches.length
       ) {
         return word
           .split('-')
@@ -106,7 +115,9 @@ const titleize = (value, exceptions = {}) => {
         (word.indexOf('-') !== -1 && word.length < 3) ||
         (word.indexOf('-') !== -1 &&
           word.length >= 3 &&
-          !word.match(/(?<=[\w+])-(?=[\w+])/gi))
+          // !word.match(/(?<=[\w+])-(?=[\w+])/gi)
+          !matches.length
+          )
       ) {
         const v = word.replace(/-/g, '');
         if (v.length > 0) {
