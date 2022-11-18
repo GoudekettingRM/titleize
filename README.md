@@ -1,12 +1,15 @@
 ![Node.js CI](https://github.com/GoudekettingRM/titleize/workflows/Node.js/badge.svg)
 
-<a href="https://www.paypal.me/goudekettingrm" target="_blank">
+<a href="https://www.buymeacoffee.com/goudekettingrm" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-blue.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
+<!-- <a href="https://www.paypal.me/goudekettingrm" target="_blank">
   <img
     src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
     title="PayPal - The safer, easier way to pay online!"
     alt="Donate with PayPal button"
   />
-</a>
+</a> -->
 
 ## Installation
 
