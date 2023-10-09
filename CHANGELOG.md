@@ -11,3 +11,7 @@
 ### Patch Changes
 
 - f351121: Fix Vulnerabilities
+
+## 1.2.0
+
+- 247a5f6: Stricter minimizing & fix lookbehinds on safari
