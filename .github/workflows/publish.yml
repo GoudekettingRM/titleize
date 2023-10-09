@@ -1,7 +1,7 @@
 name: Publish
 on:
   workflow_run:
-    workflows: ['CI']
+    workflows: ['Node.js']
     types:
       - completed
   push:
@@ -33,4 +33,4 @@ jobs:
       - name: Send NTFY Notification on publish a publish happens
         if: steps.changesets.outputs.published == 'true'
         # You can do something when a publish happens.
-        run: curl -d "A new version of Next Navigate was published!" -u ${{ secrets.NTFY_USER }}:${{ secrets.NTFY_PASSWORD }} ntfy.goudeketting.nl/next-navigate
+        run: curl -d "A new version of Next Navigate was published!" -u ${{ secrets.NTFY_USER }}:${{ secrets.NTFY_PASSWORD }} ntfy.goudeketting.nl/titleize
