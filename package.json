@@ -5,7 +5,8 @@
   "repository": "git://github.com/GoudekettingRM/titleize.git",
   "scripts": {
     "test": "mocha",
-    "min": "npx google-closure-compiler --js=titleize.js --js_output_file=titleize.min.js --language_out=ECMASCRIPT5_STRICT"
+    "build": "npx google-closure-compiler --js=titleize.js --js_output_file=titleize.min.js --language_out=ECMASCRIPT5_STRICT",
+    "release": "npm run build && changeset publish"
   },
   "main": "./titleize.min.js",
   "types": "./titleize.d.ts",
