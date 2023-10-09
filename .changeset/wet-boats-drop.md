@@ -1,5 +1,0 @@
----
-"titleizejs": patch
----
-
-Fix Vulnerabilities
