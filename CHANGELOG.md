@@ -1,5 +1,11 @@
 # titleizejs
 
+## 1.3.0
+
+### Minor Changes
+
+- 466ea15: Allow custom separator for slugs
+
 ## 1.2.2
 
 ### Patch Changes
