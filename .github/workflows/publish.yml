@@ -30,6 +30,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push Tags
+        if: steps.changesets.outputs.published == 'true'
+        run: git push --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Send NTFY Notification on publish a publish happens
         if: steps.changesets.outputs.published == 'true'
         # You can do something when a publish happens.
