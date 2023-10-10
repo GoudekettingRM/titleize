@@ -3,3 +3,4 @@ test/
 titleize.js
 _config.yml
 index.md
+.changeset

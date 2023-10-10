@@ -70,16 +70,13 @@ const titleize = (value, exceptions = {}) => {
     }
   }
   const symbolsForRegex = exceptions.ignoreSymbols
-    ? cleanseSymbolList(
-        exceptions.ignoreSymbols,
-        symbols.toString().slice(2, -2),
-      )
+    ? cleanseSymbolList(exceptions.ignoreSymbols, symbols.toString().slice(2, -2))
     : symbols.toString().slice(2, -2);
 
   const symbolRegExp = new RegExp('[' + symbolsForRegex + ']', 'gi');
 
   if (exceptions.isSlug) {
-    value = value.replace(/-/g, ' ');
+    value = typeof exceptions.isSlug === 'string' ? value.replaceAll(exceptions.isSlug, ' ') : value.replace(/-/g, ' ');
   }
 
   return value
@@ -89,7 +86,7 @@ const titleize = (value, exceptions = {}) => {
       if (word) return word;
     })
     .map((word, index, array) => {
-      const regex = /([\w+])-([\w+])/gi
+      const regex = /([\w+])-([\w+])/gi;
       const matches = [];
       while (true) {
         const match = regex.exec(word);
@@ -116,17 +113,11 @@ const titleize = (value, exceptions = {}) => {
         (word.indexOf('-') !== -1 &&
           word.length >= 3 &&
           // !word.match(/(?<=[\w+])-(?=[\w+])/gi)
-          !matches.length
-          )
+          !matches.length)
       ) {
         const v = word.replace(/-/g, '');
         if (v.length > 0) {
-          return getWordForTitle(
-            word.replace(/-/g, ''),
-            index,
-            array,
-            exceptions,
-          );
+          return getWordForTitle(word.replace(/-/g, ''), index, array, exceptions);
         }
       } else {
         return getWordForTitle(word, index, array, exceptions);
@@ -144,5 +135,5 @@ module.exports = titleize;
      (ಠ _ ಠ)
 _____(_____)____
 |     Robin    |
-| Goudeketting_|
+|_Goudeketting_|
 */

@@ -107,6 +107,12 @@ titleize('i-am-a-slug'); // result: I-Am-a-Slug
 titleize('i-am-a-slug', { isSlug: true }); // result: I Am a Slug
 ```
 
+If you happen to have slugs that are use different separators, you can pass the separator for your string to `isSlug` and it will replace those. E.g.:
+
+```js
+titleize('i_am_a_slug', { isSlug: '_' }) // result: I Am a Slug
+```
+
 #### Support, bug-reports, feature suggestions
 
 If you want to contribute, report a bug, or have a suggestion for a feature, contact me at robin@goudeketting.nl or contact me via Github or Twitter.
