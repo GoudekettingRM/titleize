@@ -3,7 +3,7 @@ declare module 'titleizejs' {
     keepUpperCaseLetters?: boolean;
     keepUpperCaseWords?: boolean;
     ignoreSymbols?: string;
-    isSlug?: boolean;
+    isSlug?: boolean | string;
   }
 
   export function titleize(input: string, exceptions?: IExceptions): string;
