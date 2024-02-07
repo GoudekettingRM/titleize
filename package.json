@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "build": "npx google-closure-compiler --js=titleize.js --js_output_file=titleize.min.js --language_out=ECMASCRIPT5_STRICT",
-    "release": "npm run build && changeset publish"
+    "release": "npm run build && changeset publish",
+    "changelog": "npx changeset && git add .changeset && git commit -m \"Chore: update changelog\" && git push"
   },
   "main": "./titleize.min.js",
   "types": "./titleize.d.ts",
