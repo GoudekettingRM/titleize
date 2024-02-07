@@ -1,5 +1,11 @@
 # titleizejs
 
+## 1.3.2
+
+### Patch Changes
+
+- 1c28935: Move changesets/cli to dev dependencies
+
 ## 1.3.1
 
 ### Patch Changes
